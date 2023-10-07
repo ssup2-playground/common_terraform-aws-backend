@@ -1,10 +1,10 @@
 provider "aws" {
-  region  = "ap-northeast-2"
+  profile = "default"
 }
 
 # S3 bucket for backend
 resource "aws_s3_bucket" "tfstate" {
-  bucket = "ssup2-playground-tfstate"
+  bucket = "tfstate-ssup2-playground"
 
   versioning {
     enabled = true 
@@ -13,7 +13,7 @@ resource "aws_s3_bucket" "tfstate" {
 
 # DynamoDB for terraform state lock
 resource "aws_dynamodb_table" "terraform_state_lock" {
-  name           = "ssup2-playground-tfstate-lock"
+  name           = "tfstate-ssup2-playground"
   hash_key       = "LockID"
   billing_mode   = "PAY_PER_REQUEST"
 
